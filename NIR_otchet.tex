@@ -239,55 +239,54 @@ Django --- высокоуровневый фреймворк для веб-ра�
 % langid = {english}
 \printbibliography
 
-\pagebreak
+%\pagebreak
 
-\renewcommand{\appendixpagename}{\centering Приложения}
+%\renewcommand{\appendixpagename}{\centering Приложения}
 
 
-\begin{appendices}
-\renewcommand{\thesection}{\Asbuk{section}}
-\makeatletter
-\renewcommand{\theProgram}{\thesection.\@arabic\c@Program}
-\makeatother
+%\begin{appendices}
+%\renewcommand{\thesection}{\Asbuk{section}}
+%\makeatletter
+%\renewcommand{\theProgram}{\thesection.\@arabic\c@Program}
+%\makeatothe
 
 % каждое приложение задается следующей командой, нумерация - русскими буквами
-\section{\centering } 
+%\section{\centering } 
 % независимая нумерация листингов в каждом приложении
-\setcounter{Program}{0}
+%\setcounter{Program}{0}
 
-\begin{flushleft}
-\needspace{3\baselineskip}
-\captionof{Program}{ Часть кода реализации класса HashMapValue}\label{app1}
-\begin{MyCodes}
-public class HashMapValue {
+%\begin{flushleft}
+%\needspace{3\baselineskip}
+%\captionof{Program}{ Часть кода реализации класса HashMapValue}\label{app1}
+%\begin{MyCodes}
+%public class HashMapValue {
 	
-	protected String filename; 
-	protected HashMap<String, String> hashValue = 
-	new HashMap<>();
-	protected HashMap<String, Boolean> hashKeysFlag =
-	 new HashMap<>();
+	%protected String filename; 
+	%new HashMap<>();
+	%protected HashMap<String, Boolean> hashKeysFlag =
+	 %new HashMap<>();
 	
-	public void setData(String key, String value) {
-		hashValue.put(key, value);
-	}
+	%public void setData(String key, String value) {
+		%hashValue.put(key, value);
+	%}
 	
-	public String getData(String key) {
-		return hashValue.get(key);
-	}
-    /* ... */
-}
-\end{MyCodes}
-\end{flushleft}
+	%public String getData(String key) {
+	%	return hashValue.get(key);
+	%}
+%    /* ... */
+%}
+%\end{MyCodes}
+%\end{flushleft}
 
-\pagebreak
+%\pagebreak
 
-\begin{flushleft}
-\captionof{Program}{Пример кода}\label{app2}
-\begin{MyCodes}
-код второго приложения
-\end{MyCodes}
+%\begin{flushleft}
+%\captionof{Program}{Пример кода}\label{app2}
+%\begin{MyCodes}
+%код второго приложения
+%\end{MyCodes}
 
-\end{flushleft}
+%\end{flushleft}
 % следующее приложение - раскомментировать команды
 %\section{\centering } 
 %\setcounter{Program}{0}
@@ -299,7 +298,7 @@ public class HashMapValue {
 %\caption{Еще пример кода}\label{app3}
 %\end{Program}
 
-\end{appendices}
+%\end{appendices}
 
 \end{document}          
 
