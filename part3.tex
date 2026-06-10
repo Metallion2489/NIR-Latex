@@ -44,7 +44,7 @@
     \item \texttt{order\_index} --- целочисленный индекс, определяющий 
           базовый порядок тем;
     \item \texttt{is\_visible} --- флаг видимости темы студентам;
-    \item \texttt{prerequisites} --- рекурсивная связь многие---ко---многим 
+    \item \texttt{prerequisites} --- рекурсивная связь многие ко многим\\ 
           (\texttt{symmetrical=False}), формирующая ориентированный граф 
           предварительных требований: если тема $B$ имеет в 
           \texttt{prerequisites} тему $A$, то $A$ должна быть изучена 
@@ -311,8 +311,7 @@ OpenWeatherMap~\cite{openweathermap2026}. Оба результата кэшир
 
 Обновление профиля при сохранении результата теста автоматизировано 
 через сигнал Django. Обработчик \texttt{auto\_update\_profile\_factors} 
-в \texttt{signals.py} подключён через декоратор 
-\texttt{@receiver(post\_save, sender=PsychTestResult)} и при создании 
+в \texttt{signals.py} подключён через декоратор и при создании 
 новой записи \texttt{PsychTestResult} немедленно обновляет 
 соответствующее поле \texttt{PsychProfile} студента.
 
@@ -394,11 +393,11 @@ def probability_of_correct_answer(self, theta):
 \textbf{Выбор следующего задания.} Метод \texttt{select\_next\_item} 
 реализует стратегию максимального информационного критерия в упрощённой 
 форме: из доступных вопросов (не вошедших в \texttt{asked\_items}) 
-выбирается тот, для которого разность $|\theta --- b|$ минимальна, то есть 
+выбирается тот, для которого разность $|\theta - b|$ минимальна, то есть 
 задание наиболее близко по трудности к текущей оценке подготовленности:
 
 \begin{lstlisting}[language=Python, 
-    caption={Выбор следующего задания по минимуму $|\theta --- b|$},
+    caption={Выбор следующего задания по минимуму $|\theta - b|$},
     basicstyle=\small\ttfamily]
 def select_next_item(self, test, session):
     available = test.items.exclude(
@@ -411,14 +410,14 @@ def select_next_item(self, test, session):
     )
 \end{lstlisting}
 
-\textbf{Оценка $\theta$.} После каждого ответа уровень подготовленности 
+Оценка $\theta$. После каждого ответа уровень подготовленности 
 обновляется методом \texttt{estimate\_theta}, реализующим итеративный 
 градиентный подъём по логарифмической функции правдоподобия. 
 Для каждого заданного вопроса вычисляется отклонение между 
 наблюдаемым результатом и ожидаемой вероятностью правильного ответа, 
 после чего $\theta$ сдвигается на шаг \texttt{step = 0.1}.
 
-\textbf{Обновление уровня сложности.} После каждого ответа метод 
+Обновление уровня сложности. После каждого ответа метод 
 \texttt{update\_complexity} сдвигает текущий уровень сложности на 
 одну позицию: при правильном ответе --- в сторону увеличения 
 (\texttt{'easy'} $\to$ \texttt{'medium'} $\to$ \texttt{'hard'}), 
@@ -468,8 +467,7 @@ def select_next_item(self, test, session):
 
 \subsubsection{Расчёт поведенческих метрик}
 
-Вычисление метрик реализовано в функции 
-\texttt{calc\_motion\_metrics(points)} модуля 
+Вычисление метрик реализовано в функции модуля 
 \texttt{mouse\_metrics.py}. Функция принимает список 
 кортежей \texttt{(timestamp, x, y)} и возвращает пару значений 
 \texttt{(motivation, neuroticism)}.
